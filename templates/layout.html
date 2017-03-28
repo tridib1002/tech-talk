@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+  <meta charset=utf-8>
+  <title> Tech Talk </title>
+  <meta name="viewport" content = "width=device-width, 
+  initial-scale=1.0 maximum-scale=1">
+  <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-theme.min.css" />
+  <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+
+  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+  
+
+  <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+  <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', 
+  filename='css/custom.css')}}">
+
+  <link rel="shortcut icon" href="{{ url_for('static', 
+  filename='images/favicon.ico')}}">
+
+</head>
+
+<body>
+  
+  <div class="navbar-fixed-top">
+  <nav class="navbar navbar-inverse">
+
+    <div class= "container">
+
+      <!-- Navbar Header -->
+      <div class="navber-header">
+        <!-- Navbar Collapse for Small Devices -->
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#mainNavBar" aria-expanded="false">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        <!-- Logo --> 
+        </button>
+        <a id="homePage" href="/" class="navbar-left"><img style = 'max-width:90px;
+          margin-right:10px; margin-top:5px;margin-bottom:5px;'
+          src="{{ url_for('static', filename='images/mainlogo.png')}} "></a>
+      </div>
+
+       <!-- Menu Items -->
+      <div class="collapse navbar-collapse" id="mainNavBar">
+          
+        <ul class="nav navbar-nav">
+          <li><a class="blogTag" href="">Technology</a></li>
+          <li><a class="blogTag" href="">Web Design</a></li>
+          <li><a class="blogTag" href="">Progrmming</a></li>
+          <li><a class="blogTag" href="">Science</a></li>
+
+          <!-- Drop Down Menu -->
+          <li class = "dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Mobile <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a class="blogTag" href="">Android</a></li>
+              <li><a class="blogTag" href="">iOS</a></li>
+              <li><a class="blogTag" href="">Windows</a></li>
+            </ul>
+          </li>
+        </ul>
+
+        <!-- Menu Items Right -->
+        <!-- insert Code here for right menu item for every page according to usage -->
+        {% block right_menu %}
+
+        {% endblock %}
+      
+      </div>
+
+
+    </div>
+    
+  </nav>
+  </div>
+
+  {% block body%}
+
+  {% endblock %}
+
+</body>
+
+</html>

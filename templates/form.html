@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang=en>
+<head>
+  <meta charset=utf-8>
+  <title> My Form </title>
+  <meta name="viewport" content = "width=device-width, 
+  initial-scale=1.0">
+  <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-theme.min.css" />
+  <link rel="stylesheet" href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+
+  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+
+  <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+  <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', 
+  filename='css/custom.css')}}">
+
+  <link rel="shortcut icon" href="{{ url_for('static', 
+  filename='images/favicon.ico')}}">
+
+
+</head>
+<body>
+<div class="container">
+<br><br><br><br>
+<form class="form-inline" id="form">
+  <div class="form-group">
+    <label class="sr-only" for="emailInput">Email Address</label>
+    <input type="email" class="form-control" id="emailInput" placeholder="Email">   
+  </div>
+  <div class="form-group">
+    <label class="sr-only" for="nameInput">Name</label>
+    <input type="text" class="form-control" id="nameInput" placeholder="First Name">
+  </div>
+  <button type="submit" class"btn btn-default">Submit</button>
+</form>
+<br>
+<div id="successAlert" class="alert alert-success" role="alert" style="display:none;"></div>
+<div id="errorAlert" class="alert alert-danger" role="alert" style="display:none;"></div>
+</div>
+<script>
+$(document).ready(function(){
+  $('#form').submit(function(e){
+    $.ajax({
+      data:{
+        name: $('#nameInput').val(),
+        email: $('#emailInput').val()
+      },
+      type: 'POST',
+      url : '/all'
+    })
+    .done(function(data){
+      console.log(data);
+        // if (data.error){
+        //   $('#errorAlert').text(data.error).show();
+        //   $('#successAlert').hide();
+        // }else{
+        //   $('#successAlert').text(data.name).show();
+        //   $('#errorAlert').hide();
+
+        // }
+    });
+
+    e.preventDefault();
+
+  });
+});
+
+</script>
+</body>
+</html>
